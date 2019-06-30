@@ -1,0 +1,114 @@
+ <!-- MAterial design  FORM -->
+ <mat-card>
+ <div class="example-container">   
+    <form class="example-container" [formGroup]="complainForm" (ngSubmit)="onSubmit(complainForm.value)">
+            <mat-form-field>
+              <input formControlName="FirstName" matInput placeholder="First Name">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input formControlName="LastName" matInput placeholder="Last Name">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input  formControlName="Email" matInput placeholder="Enter your email" required>
+                
+              </mat-form-field>
+          
+            <mat-form-field>
+              <textarea  formControlName="Complain" matInput placeholder="Complain Here"></textarea>
+            </mat-form-field>
+        
+            <div class="example-button-row">
+                <button mat-raised-button [disabled]="!complainForm.valid" matTooltip="all fields mandatory"
+                style="background-color: rgb(107, 200, 138);  color:blanchedalmond;width:300px;"
+                   >POST YOUR PROBLEMS</button> 
+            </div>
+      </form>
+    
+</div>
+</mat-card>
+
+
+<!--  TABLE  ----------------------------- -->
+  <table mat-table [dataSource]="allForms" class="mat-elevation-z8">
+         <!-- Id Column -->
+         <!-- <ng-container matColumnDef="complainId">
+            <th mat-header-cell *matHeaderCellDef style="text-align:center;width:10%"> Id </th>
+            <td mat-cell *matCellDef="let element" style="text-align:center;"> {{element.ComplaiId}} </td>
+          </ng-container> -->
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef style="text-align:center;"> Name</th>
+          <td mat-cell *matCellDef="let element" style="text-align:center;"> {{element.FirstName}} </td>
+        </ng-container>
+
+        <!-- Lastname Column -->
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef style="text-align:center;width:10%;"> Lastname </th>
+          <td mat-cell *matCellDef="let element" style="text-align:center;"> {{element.LastName}} </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <!-- <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef style="text-align:center;width:10%;"> Email </th>
+          <td mat-cell *matCellDef="let element" style="text-align:center;">{{element.Email}} </td>
+        </ng-container> -->
+
+        <!-- Complain Column -->
+        <ng-container matColumnDef="complain">
+          <th mat-header-cell *matHeaderCellDef style="text-align:center;width:50%;"> Complain </th>
+          <td mat-cell *matCellDef="let element" style="text-align:center; text-align:center;" > {{element.Complain}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef style="text-align:center;width:10%;"> </th>
+          <td mat-cell *matCellDef="let element" style="text-align:center;">
+              <button type="button" class="btn btn-danger" matTooltip="Click Delete Button"
+              (click)="deleteComplain(element.ComplaiId)">Delete</button> </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
+
+    
+ <!-- lame table -->
+<!-- <mat-card>
+  <h1> Contact Us</h1>
+  <div class="container">
+     <form (ngSubmit)="onSubmit()" #contacForm="ngForm">
+         First name:<br>
+         <input type="text" name="firstname" [(ngModel)]="complainForm.FirstName">
+         <br>Last name:<br>
+
+         <input type="text" name="lastname" [(ngModel)]="complainForm.LastName">
+         <br>E-mail:<br>
+
+         <input type="email" name="email" [(ngModel)]="complainForm.Email">
+         <br>Complain Here:<br>
+
+         <textarea name="message" rows="10" cols="60" [(ngModel)]="complainForm.Complain">
+
+         </textarea>
+         <br>
+
+         <div class="example-button-row">
+            <button mat-raised-button style="background-color: rgb(60, 66, 62);
+              color:blanchedalmond;width:300px;">
+              POST YOUR PROBLEMS
+            </button> 
+            <br><br>
+            <button mat-raised-button type="submit"  style="background-color: rgb(38, 95, 57);
+              color:blanchedalmond;width:300px;" [disabled]="!contacForm.form.valid">
+              TESTING
+            </button> 
+        </div>
+        <h2>diagnostic : {{diagnostic}}</h2> 
+       </form>
+  </div>
+</mat-card> -->
+
+
+ 

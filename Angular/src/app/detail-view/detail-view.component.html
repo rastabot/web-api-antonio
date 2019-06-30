@@ -1,0 +1,56 @@
+<div class="container">
+
+<mat-card class="example-card">
+  <!-- title and subtitle -->
+    <mat-card-header style="float:center;">
+        <mat-card-title>{{ product.Name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.Category}}</mat-card-subtitle>
+      </mat-card-header>
+
+    <mat-grid-list cols="3" rowHeight="250px">
+      <!-- image box -->
+        <mat-grid-tile [colspan]="1" [rowspan]="2">
+            <div class="col-sm-6">
+              <img mat-card-image src="{{product.Image}}" class="img-thumbnail"   />
+           </div>
+        </mat-grid-tile>
+
+        <!-- id , name , price  add/substract buttons -->
+        <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="lightblue" >
+            <div class="container">
+                <div><h3><span>Quantity: </span>{{product.Quantity}}</h3></div>
+                <div><h3><span>Name: </span>{{product.Name}}</h3></div>
+                <div><h3><span>Price: </span>${{product.Price}}</h3></div>
+                <div class="example-button-row">
+                  <button mat-raised-button (click)="addOneInDb(product.ProductId); openDialog()" 
+                  style="background:rgba(15, 117, 5, 0.603); color:white;">
+                  <mat-icon>add_shopping_cart</mat-icon>
+                </button> 
+              </div> 
+              <br>
+              <div class="example-button-row">
+                  <button mat-raised-button (click)="SubstractOneInDb(product.ProductId); openDialog()"
+                  style="background:rgb(250, 116, 83); color:white">
+                  <mat-icon>remove_shopping_cart</mat-icon>
+                </button> 
+              </div>
+              
+            </div>
+        </mat-grid-tile>
+        <!-- Description  -->
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-card-content>
+                <h2>Description:</h2>
+                <h3>{{product.Details}}</h3>
+              </mat-card-content>
+        </mat-grid-tile>
+        
+      </mat-grid-list>
+      <br>
+        <div>
+            <button mat-raised-button (click)="goBack()"
+            style="background:rgb(90, 165, 20); color:white">go back</button>
+          </div> 
+  </mat-card>
+</div>
+    
